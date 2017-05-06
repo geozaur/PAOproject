@@ -1,6 +1,6 @@
 # PAOproject
-Assignment for second term Java course
-Project description
+Assignment for second term Java course.<Enter>
+Project description:
 
 ```
 {
