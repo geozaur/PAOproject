@@ -2,7 +2,7 @@
 Assignment for second term Java course
 Project description
 
-'''
+```
 {
     "site": "http://pao.neural-soft.com/",
     "nume": "Imprimare online",
@@ -17,4 +17,4 @@ Project description
         "Modul raportare vanzari, pe produs, pe serviciu si pe client (Nota: dupa cum vedeti nu lucram cu date calendaristice, s-ar putea sa va fie mai usor daca le excludeti. Nu avem raporturi "pe luna" ci doar raporturi pe produs, serviciu, client)"
     ]
 }
-'''
+```
