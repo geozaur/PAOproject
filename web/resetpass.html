@@ -9,16 +9,16 @@
 </head>
 
 <body>
-    <form>
+    <form action="TestController" method="Post">
         Username <input type="text" name="username"> <br> 
         Security Question 
-        <select>
+        <select name="securityQuestion">
             <option value="pet">What is my pet's name?</option>
             <option value="nick">What is my childhood nickname?</option>
             <option value="car">Which is my favorite car model?</option>
             <option value="cousin">Where does my cousin live?</option>
         </select> <br>
-        Answer <input type="text" name="password" autocomplete="off"> <br>
+        Answer <input type="text" name="securityAnswer" autocomplete="off"> <br>
         New Password <input type="password" name="password"> <br>
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>

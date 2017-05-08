@@ -9,17 +9,22 @@
 </head>
 
 <body>
-    <form>
+    <form action="SignupController" method="Post">
         Username <input type="text" name="username"> <br>
         Password <input type="password" name="password"> <br>
+        First Name <input type="text" name="firstName"> <br>
+        Last Name <input type="text" name="lastName"> <br>
+        Country <input type="text" name="country"> <br>
+        City <input type="text" name="city"> <br>
+        Address <input type="text" name="address"> <br>
         Security Question
-        <select>
+        <select name="securityQuestion">
             <option value="pet">What is my pet's name?</option>
             <option value="nick">What is my childhood nickname?</option>
             <option value="car">Which is my favorite car model?</option>
             <option value="cousin">Where does my cousin live?</option>
         </select> <br>
-        Answer <input type="text" name="password" autocomplete="off"> <br>
+        Answer <input type="text" name="securityAnswer" autocomplete="off"> <br>
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
     </form>
