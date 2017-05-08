@@ -31,25 +31,10 @@
                       <td> <%= client.getCity() %></td>
                       <td> <%= client.getAddress() %></td>
                       <td> <%= client.isBlocked() %></td>
-                      
                   </tr>
                   <%
                 }
             %>
-<!--            
-            <c:forEach var="book" items="${listBook}">
-                <tr>
-                    <td><c:out value="${book.id}" /></td>
-                    <td><c:out value="${book.title}" /></td>
-                    <td><c:out value="${book.author}" /></td>
-                    <td><c:out value="${book.price}" /></td>
-                    <td>
-                        <a href="/edit?id=<c:out value='${book.id}' />">Edit</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/delete?id=<c:out value='${book.id}' />">Delete</a>                     
-                    </td>
-                </tr>
-            </c:forEach>-->
         </table>
     </body>
 </html>
