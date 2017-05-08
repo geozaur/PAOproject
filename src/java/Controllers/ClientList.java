@@ -4,13 +4,14 @@ import Models.Client;
 import Models.ClientDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SignupController extends HttpServlet {
+public class ClientList extends HttpServlet {
 
     private ClientDAO clientDAO;
 
@@ -27,28 +28,22 @@ public class SignupController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        try {
+            List<Client> clientList = clientDAO.getClientList();
+            request.setAttribute("clientList",clientList);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("clients.jsp");
+            dispatcher.forward(request,response);
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
+            
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Client client = new Client(request.getParameter("username"),
-                request.getParameter("password"),
-                request.getParameter("firstName"),
-                request.getParameter("lastName"),
-                request.getParameter("country"),
-                request.getParameter("city"),
-                request.getParameter("address"),
-                request.getParameter("securityQuestion"),
-                request.getParameter("securityAnswer"));
-
-        try {
-            clientDAO.signUp(client);
-            response.sendRedirect("index.html");
-        } catch (SQLException ex) {
-            throw new ServletException(ex);
-        }
-
+        
     }
 
 }

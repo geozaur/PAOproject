@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class SigninController extends HttpServlet {
 
@@ -34,14 +35,23 @@ public class SigninController extends HttpServlet {
         try {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            boolean success = clientDAO.signIn(username, password);
-
-            if (success) {
-                request.setAttribute("username", username);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("userpage.jsp");
-                dispatcher.forward(request, response);
-            } else {
-                throw new ServletException("Account does not exist or it is blocked");
+            int success = clientDAO.signIn(username, password);
+            HttpSession session;
+            switch (success) {
+                case 0:
+                    session = request.getSession();
+                    session.setAttribute("username", username);
+                    session.setAttribute("type", 0);
+                    response.sendRedirect("userpage.jsp");
+                    break;
+                case 1:
+                    session = request.getSession();
+                    session.setAttribute("username", username);
+                    session.setAttribute("type", 1);
+                    response.sendRedirect("admin/index.jsp");
+                    break;
+                default:
+                    throw new ServletException("Account does not exist or it is blocked");
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);

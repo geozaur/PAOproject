@@ -7,6 +7,6 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Hello <%= request.getParameter("username") %></h1>
+        <h1>Hello <%= request.getSession().getAttribute("username") %></h1>
     </body>
 </html>

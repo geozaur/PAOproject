@@ -27,6 +27,20 @@ public class Client {
         this.blocked = false;
     }
     
+    public Client(String username, String password, String firstName, String lastName, String country, String city, String address, String securityQuestion, String securityAnswer, Boolean blocked) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.country = country;
+        this.city = city;
+        this.address = address;
+        this.accountType = false;
+        this.securityQuestion = securityQuestion;
+        this.securityAnswer = securityAnswer;
+        this.blocked = blocked;
+    }
+    
     public String getUsername() {
         return username;
     }

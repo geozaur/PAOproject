@@ -1,60 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    
     <context-param>
         <param-name>jdbcURL</param-name>
         <param-value>jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11172842</param-value>
     </context-param>
- 
     <context-param>
         <param-name>jdbcUsername</param-name>
-        <param-value>???</param-value>
+        <param-value>sql11172842</param-value>
     </context-param>
- 
     <context-param>
         <param-name>jdbcPassword</param-name>
-        <param-value>???</param-value>
+        <param-value>evsMvQRUG4</param-value>
     </context-param>
-    
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>Controllers.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/admin/index.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/userpage.jsp</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>Controllers.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/admin/index.jsp</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>TestController</servlet-name>
         <servlet-class>Controllers.TestController</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>SigninController</servlet-name>
         <servlet-class>Controllers.SigninController</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>SignupController</servlet-name>
         <servlet-class>Controllers.SignupController</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>ResetPasswordController</servlet-name>
+        <servlet-class>Controllers.ResetPasswordController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientList</servlet-name>
+        <servlet-class>Controllers.ClientList</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestController</servlet-name>
-        <url-pattern>/TestController</url-pattern>
+        <url-pattern>/admin/TestController</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>SigninController</servlet-name>
         <url-pattern>/SigninController</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>SignupController</servlet-name>
         <url-pattern>/SignupController</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>ResetPasswordController</servlet-name>
+        <url-pattern>/ResetPasswordController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientList</servlet-name>
+        <url-pattern>/admin/ClientList</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
         <location>/error.jsp</location>
     </error-page>
-    
-    </web-app>
+</web-app>
