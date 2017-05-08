@@ -6,11 +6,11 @@
     </context-param>
     <context-param>
         <param-name>jdbcUsername</param-name>
-        <param-value>sql11172842</param-value>
+        <param-value>???</param-value>
     </context-param>
     <context-param>
         <param-name>jdbcPassword</param-name>
-        <param-value>evsMvQRUG4</param-value>
+        <param-value>???</param-value>
     </context-param>
     <filter>
         <filter-name>LoginFilter</filter-name>
