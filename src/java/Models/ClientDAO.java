@@ -11,6 +11,7 @@ public class ClientDAO extends DataAccess {
     public boolean signUp(Client client) throws SQLException {
         String sql = "INSERT INTO clients VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         connect();
+        
 
         PreparedStatement statement = jdbcConnection.prepareStatement(sql);
         statement.setString(1, client.getUsername());
