@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "AdminFilter", urlPatterns = {"/admin/index.jsp"}, dispatcherTypes = {DispatcherType.FORWARD})
+@WebFilter(filterName = "AdminFilter", urlPatterns = {"admin/*"}, dispatcherTypes = {DispatcherType.FORWARD})
 public class AdminFilter implements Filter {
     
     private static final boolean debug = true;
