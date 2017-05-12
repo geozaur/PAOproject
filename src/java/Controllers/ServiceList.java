@@ -1,7 +1,7 @@
 package Controllers;
 
-import Models.Client;
-import Models.ClientDAO;
+import Models.Service;
+import Models.ServiceDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -11,31 +11,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ClientList extends HttpServlet {
+public class ServiceList extends HttpServlet {
 
-    private ClientDAO clientDAO;
+    private ServiceDAO serviceDAO;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        clientDAO = new ClientDAO();
+        serviceDAO = new ServiceDAO();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         try {
-            List<Client> clientList = clientDAO.getClientList();
-     
-            request.setAttribute("clientList",clientList);
+            List<Service> serviceList = serviceDAO.getServiceList();
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("clients.jsp");
-            dispatcher.forward(request,response);
+            request.setAttribute("serviceList", serviceList);
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("services.jsp");
+            dispatcher.forward(request, response);
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
-            
+
     }
 
     @Override

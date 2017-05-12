@@ -1,16 +1,26 @@
 package Models;
 
 public class Service {
-    private int id;
+
+    private String id;
     private String name;
     private String type;
     private boolean colored;
+    private int price;
 
-    public int getId() {
+    public Service(String id, String name, String type, boolean colored, int price) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.colored = colored;
+        this.price = price;
+    }
+    
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -38,5 +48,12 @@ public class Service {
         this.colored = colored;
     }
 
-    
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
 }

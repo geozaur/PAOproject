@@ -48,6 +48,14 @@
         <servlet-name>BlockController</servlet-name>
         <servlet-class>Controllers.BlockController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductList</servlet-name>
+        <servlet-class>Controllers.ProductList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServiceList</servlet-name>
+        <servlet-class>Controllers.ServiceList</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestController</servlet-name>
         <url-pattern>/admin/TestController</url-pattern>
@@ -76,6 +84,14 @@
     <servlet-mapping>
         <servlet-name>BlockController</servlet-name>
         <url-pattern>/admin/BlockController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductList</servlet-name>
+        <url-pattern>/admin/ProductList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServiceList</servlet-name>
+        <url-pattern>/admin/ServiceList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

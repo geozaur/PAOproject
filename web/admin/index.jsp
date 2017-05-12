@@ -8,8 +8,8 @@
     </head>
     <body>
         <a href="ClientList">Clients list</a>
-        <a href="services.jsp">Services list</a>
-        <a href="products.jsp">Products list</a>
+        <a href="ServiceList">Services list</a>
+        <a href="ProductList">Products list</a>
         <form action="SignoutController">
             <button>Log out</button>
         </form>
