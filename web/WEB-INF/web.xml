@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <context-param>
-        <param-name>jdbcURL</param-name>
-        <param-value>jdbc:mysql://mysql4.gear.host:3306/paoproject</param-value>
-    </context-param>
-    <context-param>
-        <param-name>jdbcUsername</param-name>
-        <param-value>paoproject</param-value>
-    </context-param>
-    <context-param>
-        <param-name>jdbcPassword</param-name>
-        <param-value>Ki2YtL~41i!k</param-value>
-    </context-param>
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>Controllers.LoginFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
-        <url-pattern>admin/*</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
-        <url-pattern>userpage.jsp</url-pattern>
+        <url-pattern>/userpage.jsp</url-pattern>
     </filter-mapping>
     <filter>
         <filter-name>AdminFilter</filter-name>
@@ -30,7 +18,7 @@
     </filter>
     <filter-mapping>
         <filter-name>AdminFilter</filter-name>
-        <url-pattern>admin/*</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>TestController</servlet-name>
