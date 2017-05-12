@@ -22,7 +22,7 @@ public class ClientList extends HttpServlet {
         String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
         String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
 
-        clientDAO = new ClientDAO(jdbcURL, jdbcUsername, jdbcPassword);
+        clientDAO = new ClientDAO();
     }
 
     @Override

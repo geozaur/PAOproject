@@ -8,10 +8,6 @@ import java.util.List;
 
 public class ClientDAO extends DataAccess {
 
-    public ClientDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) {
-        super(jdbcURL, jdbcUsername, jdbcPassword);
-    }
-
     public boolean signUp(Client client) throws SQLException {
         String sql = "INSERT INTO clients VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         connect();

@@ -2,15 +2,15 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <context-param>
         <param-name>jdbcURL</param-name>
-        <param-value>jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11172842</param-value>
+        <param-value>jdbc:mysql://mysql4.gear.host:3306/paoproject</param-value>
     </context-param>
     <context-param>
         <param-name>jdbcUsername</param-name>
-        <param-value>???</param-value>
+        <param-value>paoproject</param-value>
     </context-param>
     <context-param>
         <param-name>jdbcPassword</param-name>
-        <param-value>???</param-value>
+        <param-value>Ki2YtL~41i!k</param-value>
     </context-param>
     <filter>
         <filter-name>LoginFilter</filter-name>
@@ -81,4 +81,11 @@
         <exception-type>java.lang.Exception</exception-type>
         <location>/error.jsp</location>
     </error-page>
+    
+    <resource-ref>
+        <description>paoproject</description>
+        <res-ref-name>jdbcPaoProject</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
 </web-app>

@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/PAOproject"/>
+<Context antiJARLocking="true" path="/PAOproject">
+    <Resource name="jdbcPaoProject"
+               auth="Container"
+               type="javax.sql.DataSource"
+               username="paoproject"
+               password="Ki2YtL~41i!k"
+               driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://mysql4.gear.host:3306/paoproject"
+               maxActive="15"
+               maxIdle="3"/>
+</Context>

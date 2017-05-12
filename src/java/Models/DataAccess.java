@@ -1,31 +1,33 @@
 package Models;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 public class DataAccess {
 
-    protected String jdbcURL;
-    protected String jdbcUsername;
-    protected String jdbcPassword;
+    private Context initCtx;
+    private Context envCtx;
+    private DataSource dbRes;
+
     protected Connection jdbcConnection;
 
-    public DataAccess(String jdbcURL, String jdbcUsername, String jdbcPassword) {
-        this.jdbcURL = jdbcURL;
-        this.jdbcUsername = jdbcUsername;
-        this.jdbcPassword = jdbcPassword;
+    public DataAccess() {
+        try {
+            initCtx = new InitialContext();
+            envCtx = (Context) initCtx.lookup("java:comp/env");
+            dbRes = (DataSource) envCtx.lookup("jdbcPaoProject");
+        } catch (NamingException ex) {
+            System.out.println("erroneous link to resource");
+        }
     }
 
     protected void connect() throws SQLException {
         if (jdbcConnection == null || jdbcConnection.isClosed()) {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException e) {
-                throw new SQLException(e);
-            }
-            jdbcConnection = DriverManager.getConnection(
-                    jdbcURL, jdbcUsername, jdbcPassword);
+            jdbcConnection = dbRes.getConnection();
         }
     }
 
