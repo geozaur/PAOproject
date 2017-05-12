@@ -17,10 +17,6 @@ public class SignupController extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        String jdbcURL = getServletContext().getInitParameter("jdbcURL");
-        String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
-        String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
-
         clientDAO = new ClientDAO();
     }
 

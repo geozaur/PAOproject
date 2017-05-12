@@ -18,11 +18,11 @@
     </filter>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
-        <url-pattern>/admin/index.jsp</url-pattern>
+        <url-pattern>admin/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
-        <url-pattern>/userpage.jsp</url-pattern>
+        <url-pattern>userpage.jsp</url-pattern>
     </filter-mapping>
     <filter>
         <filter-name>AdminFilter</filter-name>
@@ -30,7 +30,7 @@
     </filter>
     <filter-mapping>
         <filter-name>AdminFilter</filter-name>
-        <url-pattern>/admin/index.jsp</url-pattern>
+        <url-pattern>admin/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>TestController</servlet-name>
@@ -52,6 +52,10 @@
         <servlet-name>ClientList</servlet-name>
         <servlet-class>Controllers.ClientList</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SignoutController</servlet-name>
+        <servlet-class>Controllers.SignoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestController</servlet-name>
         <url-pattern>/admin/TestController</url-pattern>
@@ -72,6 +76,11 @@
         <servlet-name>ClientList</servlet-name>
         <url-pattern>/admin/ClientList</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignoutController</servlet-name>
+        <url-pattern>/SignoutController</url-pattern>
+        <url-pattern>/admin/SignoutController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -81,7 +90,6 @@
         <exception-type>java.lang.Exception</exception-type>
         <location>/error.jsp</location>
     </error-page>
-    
     <resource-ref>
         <description>paoproject</description>
         <res-ref-name>jdbcPaoProject</res-ref-name>

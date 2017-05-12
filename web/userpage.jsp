@@ -7,6 +7,9 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Hello <%= request.getSession().getAttribute("username") %></h1>
+        <h1>Hello <%= request.getSession().getAttribute("username")%></h1>
+        <form action="SignoutController">
+            <button>Log out</button>
+        </form>
     </body>
 </html>

@@ -8,7 +8,7 @@
         <title>Clients list</title>
     </head>
     <body>
-        <table border="1" cellpadding="5">
+        <table>
             <caption><h2>List of Clients</h2></caption>
             <tr>
                 <th>Username</th>

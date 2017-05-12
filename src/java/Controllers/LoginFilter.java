@@ -16,14 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "LoginFilter", urlPatterns = {"/userpage.jsp","/admin/index.jsp"}, dispatcherTypes = {DispatcherType.FORWARD})
+@WebFilter(filterName = "LoginFilter", urlPatterns = {"userpage.jsp","admin/*"}, dispatcherTypes = {DispatcherType.FORWARD})
 public class LoginFilter implements Filter {
     
     private static final boolean debug = true;
     private FilterConfig filterConfig = null;
      
-    
-
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {

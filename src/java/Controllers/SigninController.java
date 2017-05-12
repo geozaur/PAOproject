@@ -12,15 +12,12 @@ import javax.servlet.http.HttpSession;
 
 public class SigninController extends HttpServlet {
 
+    private final int SESSIONTIME = 1800; // 30 * 60 seconds
     private ClientDAO clientDAO;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        String jdbcURL = getServletContext().getInitParameter("jdbcURL");
-        String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
-        String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
-
         clientDAO = new ClientDAO();
     }
 
@@ -36,16 +33,15 @@ public class SigninController extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             int success = clientDAO.signIn(username, password);
-            HttpSession session;
+            HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(SESSIONTIME);
             switch (success) {
                 case 0:
-                    session = request.getSession();
                     session.setAttribute("username", username);
                     session.setAttribute("type", 0);
                     response.sendRedirect("userpage.jsp");
                     break;
                 case 1:
-                    session = request.getSession();
                     session.setAttribute("username", username);
                     session.setAttribute("type", 1);
                     response.sendRedirect("admin/index.jsp");
