@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class TestController extends HttpServlet {
+public class BlockController extends HttpServlet {
 
     private ClientDAO clientDAO;
 
@@ -21,18 +21,18 @@ public class TestController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        String username = request.getParameter("username");
-//        String blocked = request.getParameter("blocked");
-//        try {
-//            int success = clientDAO.switchBlockedState(username, blocked);
-//            if (success == 1){
-//                response.sendRedirect("ClientList");
-//            }else{
-//                throw new ServletException("Error switching blocked state");
-//            }
-//        } catch (SQLException ex) {
-//            throw new ServletException(ex);
-//        }
+        String username = request.getParameter("username");
+        String blocked = request.getParameter("blocked");
+        try {
+            int success = clientDAO.switchBlockedState(username, blocked);
+            if (success == 1){
+                response.sendRedirect("ClientList");
+            }else{
+                throw new ServletException("Error switching blocked state");
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
         
     }
 

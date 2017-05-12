@@ -131,4 +131,25 @@ public class ClientDAO extends DataAccess {
         
         return clientList;
     }
+    
+    public int switchBlockedState(String username, String blocked) throws SQLException{
+        String sql = "UPDATE clients SET blocked = ? WHERE username = ?";
+        
+        connect();
+        
+        if (blocked.equals("0")){
+            blocked = "1";
+        }else{
+            blocked = "0";
+        }
+        
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, blocked);
+        statement.setString(2, username);
+        int success = statement.executeUpdate();
+        
+        statement.close();
+        disconnect();
+        return success;
+    }
 }

@@ -19,20 +19,30 @@
                 <th>Address</th>
                 <th>Blocked</th>
             </tr>
-            
+
             <%
-                for (Client client : (List<Client>)request.getAttribute("clientList")){
-                  %>
-                  <tr>
-                      <td> <%= client.getUsername() %></td>
-                      <td> <%= client.getFirstName() %></td>
-                      <td> <%= client.getLastName() %></td>
-                      <td> <%= client.getCountry() %></td>
-                      <td> <%= client.getCity() %></td>
-                      <td> <%= client.getAddress() %></td>
-                      <td> <%= client.isBlocked() %></td>
-                  </tr>
-                  <%
+                for (Client client : (List<Client>) request.getAttribute("clientList")) {
+            %>
+            <tr>
+                <td> <%= client.getUsername()%></td>
+                <td> <%= client.getFirstName()%></td>
+                <td> <%= client.getLastName()%></td>
+                <td> <%= client.getCountry()%></td>
+                <td> <%= client.getCity()%></td>
+                <td> <%= client.getAddress()%></td>
+                <td>
+                    <form action="BlockController" method="POST">
+                        <input type="hidden" name="username" value=<%= client.getUsername()%>>
+                        <input type="hidden" name="blocked" value=<%= client.isBlocked() ? 1 : 0%>>
+                        <button type="submit"><% if (client.isBlocked()) {
+                            %>Unblock<%
+                            } else {
+                            %>Block<%
+                            }%></button>
+                    </form>
+                </td>
+            </tr>
+            <%
                 }
             %>
         </table>
