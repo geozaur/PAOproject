@@ -16,6 +16,7 @@
                 <th>Color</th>
                 <th>Size</th>
                 <th>Price</th>
+                <th>Remove</th>
             </tr>
 
             <%
