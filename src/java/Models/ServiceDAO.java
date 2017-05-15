@@ -31,4 +31,60 @@ public class ServiceDAO extends DataAccess {
         
         return serviceList;
     }
+    
+    public int addService(Service service) throws SQLException {
+        String sql = "INSERT INTO services (name, type, colored, price) VALUES (?,?,?,?)";
+        
+        connect();
+        
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, service.getName());
+        statement.setString(2, service.getType());
+        statement.setBoolean(3, service.isColored());
+        statement.setInt(4, service.getPrice());
+        
+        int success = statement.executeUpdate();
+        
+        statement.close();
+        disconnect();
+        return success;
+    }
+    
+    public int removeService(String id) throws SQLException {
+        String sql = "DELETE FROM services WHERE id = ?";
+        
+        connect();
+        
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, id);
+        
+        int success = statement.executeUpdate();
+        
+        statement.close();
+        disconnect();
+        return success;
+    }
+    
+    public Service getService(String id) throws SQLException {
+        String sql = "SELECT * FROM services WHERE id = ?";
+        
+        connect();
+        
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, id);
+        
+        ResultSet rs = statement.executeQuery();
+        rs.next();
+        Service service = new Service(
+                id,
+                rs.getString("name"),
+                rs.getString("type"),
+                rs.getBoolean("colored"),
+                rs.getInt("price"));
+        
+        statement.close();
+        disconnect();
+        
+        return service;
+    }
 }

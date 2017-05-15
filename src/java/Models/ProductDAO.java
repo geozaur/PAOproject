@@ -31,4 +31,60 @@ public class ProductDAO extends DataAccess {
         
         return productList;
     }
+    
+    public int addProduct(Product product) throws SQLException {
+        String sql = "INSERT INTO products (name, color, size, price) VALUES (?,?,?,?)";
+        
+        connect();
+        
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, product.getName());
+        statement.setString(2, product.getColor());
+        statement.setString(3, product.getSize());
+        statement.setInt(4, product.getPrice());
+        
+        int success = statement.executeUpdate();
+        
+        statement.close();
+        disconnect();
+        return success;
+    }
+    
+    public int removeProduct(String id) throws SQLException {
+        String sql = "DELETE FROM products WHERE id = ?";
+        
+        connect();
+        
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, id);
+        
+        int success = statement.executeUpdate();
+        
+        statement.close();
+        disconnect();
+        return success;
+    }
+    
+    public Product getProduct(String id) throws SQLException {
+        String sql = "SELECT * FROM products WHERE id = ?";
+        
+        connect();
+        
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, id);
+        
+        ResultSet rs = statement.executeQuery();
+        rs.next();
+        Product product = new Product(
+                id,
+                rs.getString("name"),
+                rs.getString("color"),
+                rs.getString("size"),
+                rs.getInt("price"));
+        
+        statement.close();
+        disconnect();
+        
+        return product;
+    }
 }

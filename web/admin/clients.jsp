@@ -14,6 +14,8 @@
                 <th>Username</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
                 <th>Country</th>
                 <th>City</th>
                 <th>Address</th>
@@ -27,6 +29,8 @@
                 <td> <%= client.getUsername()%></td>
                 <td> <%= client.getFirstName()%></td>
                 <td> <%= client.getLastName()%></td>
+                <td> <%= client.getPhone()%></td>
+                <td> <%= client.getEmail()%></td>
                 <td> <%= client.getCountry()%></td>
                 <td> <%= client.getCity()%></td>
                 <td> <%= client.getAddress()%></td>
@@ -46,5 +50,7 @@
                 }
             %>
         </table>
+        
+        <a href="index.jsp">Back to admin page</a>
     </body>
 </html>

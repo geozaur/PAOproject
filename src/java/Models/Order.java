@@ -1,21 +1,29 @@
 package Models;
 
-import java.sql.Date;
-
-
 public class Order {
-    private int id;
+    private String id;
     private Client client;
     private Service service;
     private Product product;
-    private Date date;
+    private String date;
     private boolean state;
 
-    public int getId() {
+    public Order(String id, Client client, Service service, Product product) {
+        this.id = id;
+        this.client = client;
+        this.service = service;
+        this.product = product;
+        this.date = "";
+        this.state = false;
+    }
+    
+    
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -43,11 +51,11 @@ public class Order {
         this.product = product;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

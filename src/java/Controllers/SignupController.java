@@ -4,7 +4,6 @@ import Models.Client;
 import Models.ClientDAO;
 import java.io.IOException;
 import java.sql.SQLException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +22,7 @@ public class SignupController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        doPost(request, response);
     }
 
     @Override
@@ -32,6 +32,8 @@ public class SignupController extends HttpServlet {
                 request.getParameter("password"),
                 request.getParameter("firstName"),
                 request.getParameter("lastName"),
+                request.getParameter("phone"),
+                request.getParameter("email"),
                 request.getParameter("country"),
                 request.getParameter("city"),
                 request.getParameter("address"),

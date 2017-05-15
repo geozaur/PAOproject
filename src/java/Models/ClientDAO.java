@@ -9,7 +9,7 @@ import java.util.List;
 public class ClientDAO extends DataAccess {
 
     public boolean signUp(Client client) throws SQLException {
-        String sql = "INSERT INTO clients VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO clients VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         connect();
         
 
@@ -18,13 +18,15 @@ public class ClientDAO extends DataAccess {
         statement.setString(2, client.getPassword());
         statement.setString(3, client.getFirstName());
         statement.setString(4, client.getLastName());
-        statement.setString(5, client.getCountry());
-        statement.setString(6, client.getCity());
-        statement.setString(7, client.getAddress());
-        statement.setBoolean(8, client.isAccountType());
-        statement.setString(9, client.getSecurityQuestion());
-        statement.setString(10, client.getSecurityAnswer());
-        statement.setBoolean(11, false);
+        statement.setString(5, client.getPhone());
+        statement.setString(6, client.getEmail());
+        statement.setString(7, client.getCountry());
+        statement.setString(8, client.getCity());
+        statement.setString(9, client.getAddress());
+        statement.setBoolean(10, client.isAccountType());
+        statement.setString(11, client.getSecurityQuestion());
+        statement.setString(12, client.getSecurityAnswer());
+        statement.setBoolean(13, false);
 
         boolean rowInserted = statement.executeUpdate() > 0;
         statement.close();
@@ -107,7 +109,7 @@ public class ClientDAO extends DataAccess {
     
     public List<Client> getClientList() throws SQLException{
         List<Client> clientList = new ArrayList<>();
-        String sql = "SELECT username,first_name,last_name,country,city,address,blocked FROM clients WHERE account_type = 0";
+        String sql = "SELECT username,first_name,last_name,phone,email,country,city,address,blocked FROM clients WHERE account_type = 0";
         
         connect();
         
@@ -118,12 +120,14 @@ public class ClientDAO extends DataAccess {
             String username = rs.getString("username");
             String firstName = rs.getString("first_name");
             String lastName = rs.getString("last_name");
+            String phone = rs.getString("phone");
+            String email = rs.getString("email");
             String country = rs.getString("country");
             String city = rs.getString("city");
             String address = rs.getString("address");
             Boolean blocked = rs.getBoolean("blocked");
             
-            clientList.add(new Client(username,"",firstName,lastName,country,city,address,"","",blocked));
+            clientList.add(new Client(username,"",firstName,lastName,phone,email,country,city,address,"","",blocked));
         }
         
         statement.close();
@@ -151,5 +155,35 @@ public class ClientDAO extends DataAccess {
         statement.close();
         disconnect();
         return success;
+    }
+    
+    public Client getClient(String username) throws SQLException {
+        String sql = "SELECT * FROM clients WHERE id = ?";
+        
+        connect();
+        
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, username);
+        
+        ResultSet rs = statement.executeQuery();
+        rs.next();
+        Client client = new Client(
+                username,
+                "",
+                rs.getString("first_name"),
+                rs.getString("last_name"),
+                rs.getString("phone"),
+                rs.getString("email"),
+                rs.getString("country"),
+                rs.getString("city"),
+                rs.getString("address"),
+                "",
+                "",
+                rs.getBoolean("blocked"));
+        
+        statement.close();
+        disconnect();
+        
+        return client;
     }
 }

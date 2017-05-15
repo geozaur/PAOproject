@@ -27,10 +27,24 @@
                 <td> <%= service.getType()%></td>
                 <td> <%= service.isColored()%></td>
                 <td> <%= service.getPrice()%></td>
+                <td> <form action="RemoveService" method="Post">
+                        <input type="hidden" name="id" value="<%= service.getId()%>">
+                        <button type="submit">X</button>
+                    </form></td>
             </tr>
             <%
                 }
             %>
         </table>
+
+        <form action="AddService" method="Post">
+            Name <input type="text" name="name"> <br>
+            Type <input type="text" name="type"> <br>
+            Colored <input type="checkbox" name="colored" value="true"> <br>
+            Price <input type="number" name="price"> <br>
+            <button type="submit">Submit</button>
+        </form>
+        
+        <a href="index.jsp">Back to admin page</a>
     </body>
 </html>

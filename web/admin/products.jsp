@@ -27,10 +27,24 @@
                 <td> <%= product.getColor()%></td>
                 <td> <%= product.getSize()%></td>
                 <td> <%= product.getPrice()%></td>
+                <td> <form action="RemoveProduct" method="Post">
+                        <input type="hidden" name="id" value="<%= product.getId()%>">
+                        <button type="submit">X</button>
+                    </form></td>
             </tr>
             <%
                 }
             %>
         </table>
+        
+        <form action="AddProduct" method="Post">
+            Name <input type="text" name="name"> <br>
+            Color <input type="text" name="color"> <br>
+            Size <input type="text" name="size"> <br>
+            Price <input type="number" name="price"> <br>
+            <button type="submit">Submit</button>
+        </form>
+        
+        <a href="index.jsp">Back to admin page</a>
     </body>
 </html>
