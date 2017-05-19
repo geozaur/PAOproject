@@ -72,6 +72,18 @@
         <servlet-name>AddProduct</servlet-name>
         <servlet-class>Controllers.AddProduct</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderList</servlet-name>
+        <servlet-class>Controllers.OrderList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientOrder</servlet-name>
+        <servlet-class>Controllers.ClientOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddOrder</servlet-name>
+        <servlet-class>Controllers.AddOrder</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestController</servlet-name>
         <url-pattern>/TestController</url-pattern>
@@ -124,6 +136,18 @@
     <servlet-mapping>
         <servlet-name>AddProduct</servlet-name>
         <url-pattern>/admin/AddProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderList</servlet-name>
+        <url-pattern>/admin/OrderList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientOrder</servlet-name>
+        <url-pattern>/admin/ClientOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddOrder</servlet-name>
+        <url-pattern>/AddOrder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

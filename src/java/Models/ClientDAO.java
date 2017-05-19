@@ -158,7 +158,7 @@ public class ClientDAO extends DataAccess {
     }
     
     public Client getClient(String username) throws SQLException {
-        String sql = "SELECT * FROM clients WHERE id = ?";
+        String sql = "SELECT * FROM clients WHERE username = ?";
         
         connect();
         
