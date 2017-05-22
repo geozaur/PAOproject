@@ -1,6 +1,7 @@
 package Models;
 
 public class Client {
+
     private String username;
     private String password;
     private String firstName;
@@ -14,6 +15,10 @@ public class Client {
     private String securityQuestion;
     private String securityAnswer;
     private boolean blocked;
+
+    public Client(String username) {
+        this.username = username;
+    }
 
     public Client(String username, String password, String firstName, String lastName, String phone, String email, String country, String city, String address, String securityQuestion, String securityAnswer) {
         this.username = username;
@@ -30,7 +35,7 @@ public class Client {
         this.securityAnswer = securityAnswer;
         this.blocked = false;
     }
-    
+
     public Client(String username, String password, String firstName, String lastName, String phone, String email, String country, String city, String address, String securityQuestion, String securityAnswer, Boolean blocked) {
         this.username = username;
         this.password = password;
@@ -46,7 +51,7 @@ public class Client {
         this.securityAnswer = securityAnswer;
         this.blocked = blocked;
     }
-    
+
     public String getUsername() {
         return username;
     }
@@ -94,7 +99,7 @@ public class Client {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public String getCountry() {
         return country;
     }

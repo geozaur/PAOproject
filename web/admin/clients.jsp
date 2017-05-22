@@ -19,6 +19,7 @@
                 <th>Country</th>
                 <th>City</th>
                 <th>Address</th>
+                <th>Orders</th>
                 <th>Blocked</th>
             </tr>
 
@@ -34,6 +35,10 @@
                 <td> <%= client.getCountry()%></td>
                 <td> <%= client.getCity()%></td>
                 <td> <%= client.getAddress()%></td>
+                <td> <form action="ClientOrder" method="POST">
+                        <input type="hidden" name="username" value=<%= client.getUsername()%>>
+                        <button type="submit">Show</button>
+                    </form></td>
                 <td>
                     <form action="BlockController" method="POST">
                         <input type="hidden" name="username" value=<%= client.getUsername()%>>
@@ -42,7 +47,7 @@
                             %>Unblock<%
                             } else {
                             %>Block<%
-                            }%></button>
+                                }%></button>
                     </form>
                 </td>
             </tr>
@@ -50,7 +55,7 @@
                 }
             %>
         </table>
-        
+
         <a href="index.jsp">Back to admin page</a>
     </body>
 </html>

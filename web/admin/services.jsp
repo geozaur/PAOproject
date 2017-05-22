@@ -45,7 +45,7 @@
             Price <input type="number" name="price"> <br>
             <button type="submit">Submit</button>
         </form>
-        
+
         <a href="index.jsp">Back to admin page</a>
     </body>
 </html>

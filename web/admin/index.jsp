@@ -10,6 +10,7 @@
         <a href="ClientList">Clients list</a>
         <a href="ServiceList">Services list</a>
         <a href="ProductList">Products list</a>
+        <a href="OrderList">Orders list</a>
         <form action="SignoutController">
             <button>Log out</button>
         </form>
