@@ -9,11 +9,11 @@
     </head>
     <body>
         <table>
-            <caption><h2><%= request.getAttribute("clientName")%>'s Orders</h2></caption>
+            <caption><h2><%= request.getAttribute("productName")%> report</h2></caption>
             <tr>
                 <th>Id</th>
+                <th>Client</th>
                 <th>Service</th>
-                <th>Product</th>
                 <th>Date</th>
                 <th>State</th>
                 <th>Photo</th>
@@ -21,23 +21,23 @@
             </tr>
 
             <%
-                for (Order order : (List<Order>) request.getAttribute("clientOrders")) {
+                for (Order order : (List<Order>) request.getAttribute("productOrders")) {
             %>
             <tr>
-                <td><%= order.getId() %></td>
-                <td><%= order.getService().getName() %></td>
-                <td><%= order.getProduct().getName() %></td>
-                <td><%= order.getDate() %></td>
-                <td><%= order.isState() %></td>
-                <td><%= order.getPhoto() %></td>
-                <td><%= order.getPrice() %></td>
+                <td><%= order.getId()%></td>
+                <td><%= order.getClient().getFirstName() + " " + order.getClient().getLastName()%></td>
+                <td><%= order.getService().getName()%></td>
+                <td><%= order.getDate()%></td>
+                <td><%= order.isState()%></td>
+                <td><%= order.getPhoto()%></td>
+                <td><%= order.getPrice()%></td>
             </tr>
             <%
                 }
             %>
         </table>
-        
-        
-        <a href="ClientList">Back to clients page</a>
+
+
+        <a href="ProductList">Back to products page</a>
     </body>
 </html>

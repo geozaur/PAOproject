@@ -16,6 +16,7 @@
                 <th>Type</th>
                 <th>Colored</th>
                 <th>Price</th>
+                <th>Reports</th>
                 <th>Remove</th>
             </tr>
 
@@ -28,6 +29,12 @@
                 <td> <%= service.getType()%></td>
                 <td> <%= service.isColored()%></td>
                 <td> <%= service.getPrice()%></td>
+                <td> <form action="ServiceOrder" method="POST">
+                        <input type="hidden" name="id" value=<%= service.getId()%>>
+                        <input type="hidden" name="serviceName" value=<%= service.getName()%>>
+                        <button type="submit">Show</button>
+                    </form></td>
+                <td>
                 <td> <form action="RemoveService" method="Post">
                         <input type="hidden" name="id" value="<%= service.getId()%>">
                         <button type="submit">X</button>

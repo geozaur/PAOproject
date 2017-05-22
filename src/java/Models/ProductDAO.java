@@ -88,4 +88,25 @@ public class ProductDAO extends DataAccess {
 
         return product;
     }
+    
+    public String getIdOfProduct(String name, String color, String size, int price) throws SQLException{
+        String sql = "SELECT id FROM products WHERE name=? AND color=? AND size=? AND price=?";
+        
+        connect();
+        
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, name);
+        statement.setString(2, color);
+        statement.setString(3, size);
+        statement.setInt(4, price);
+        
+        ResultSet rs = statement.executeQuery();
+        rs.next();
+        
+        String id = rs.getString("id");
+        
+        statement.close();
+        disconnect();
+        return id;
+    }
 }

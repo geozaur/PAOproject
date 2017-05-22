@@ -84,6 +84,14 @@
         <servlet-name>AddOrder</servlet-name>
         <servlet-class>Controllers.AddOrder</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductOrder</servlet-name>
+        <servlet-class>Controllers.ProductOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServiceOrder</servlet-name>
+        <servlet-class>Controllers.ServiceOrder</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestController</servlet-name>
         <url-pattern>/TestController</url-pattern>
@@ -148,6 +156,14 @@
     <servlet-mapping>
         <servlet-name>AddOrder</servlet-name>
         <url-pattern>/AddOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductOrder</servlet-name>
+        <url-pattern>/admin/ProductOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServiceOrder</servlet-name>
+        <url-pattern>/admin/ServiceOrder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

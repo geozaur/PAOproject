@@ -115,4 +115,62 @@ public class OrderDAO extends DataAccess {
 
         return result;
     }
+    
+    public ArrayList<Order> getProductOrders(String productId) throws SQLException {
+        String sql = "SELECT * FROM orders WHERE id_product = ?";
+
+        connect();
+
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, productId);
+
+        ResultSet rs = statement.executeQuery();
+
+        ArrayList<Order> productOrders = new ArrayList<>();
+        while (rs.next()) {
+            String id = rs.getString("id");
+            Client client = clientDAO.getClient(rs.getString("username_client"));
+            Service service = serviceDAO.getService(rs.getString("id_service"));
+            String date = rs.getString("date");
+            Boolean state = rs.getBoolean("state");
+            String photo = rs.getString("photo");
+            int price = rs.getInt("total_price");
+
+            productOrders.add(new Order(id, client, service, date, state, photo, price));
+        }
+
+        statement.close();
+        disconnect();
+
+        return productOrders;
+    }
+    
+    public ArrayList<Order> getServiceOrders(String serviceId) throws SQLException {
+        String sql = "SELECT * FROM orders WHERE id_service = ?";
+
+        connect();
+
+        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+        statement.setString(1, serviceId);
+
+        ResultSet rs = statement.executeQuery();
+
+        ArrayList<Order> serviceOrders = new ArrayList<>();
+        while (rs.next()) {
+            String id = rs.getString("id");
+            Client client = clientDAO.getClient(rs.getString("username_client"));
+            Product product = productDAO.getProduct(rs.getString("id_product"));
+            String date = rs.getString("date");
+            Boolean state = rs.getBoolean("state");
+            String photo = rs.getString("photo");
+            int price = rs.getInt("total_price");
+
+            serviceOrders.add(new Order(id, client, product, date, state, photo, price));
+        }
+
+        statement.close();
+        disconnect();
+
+        return serviceOrders;
+    }
 }

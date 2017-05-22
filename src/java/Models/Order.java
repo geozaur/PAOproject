@@ -23,6 +23,8 @@ public class Order {
 
     }
     
+
+    
     public Order(String id, Client client, Service service, Product product, String photo, int price) {
         this.id = id;
         this.client = client;
@@ -39,6 +41,30 @@ public class Order {
         this.id = id;
         this.client = client;
         this.service = service;
+        this.product = product;
+        this.date = date;
+        this.state = state;
+        this.photo = photo;
+        this.price = price;
+
+    }
+    
+    public Order(String id, Client client, Service service, String date, boolean state, String photo, int price) {
+        this.id = id;
+        this.client = client;
+        this.service = service;
+        this.product = null;
+        this.date = date;
+        this.state = state;
+        this.photo = photo;
+        this.price = price;
+
+    }
+    
+       public Order(String id, Client client,Product product, String date, boolean state, String photo, int price) {
+        this.id = id;
+        this.client = client;
+        this.service = null;
         this.product = product;
         this.date = date;
         this.state = state;

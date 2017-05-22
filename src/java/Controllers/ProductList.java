@@ -2,6 +2,8 @@ package Controllers;
 
 import Models.Product;
 import Models.ProductDAO;
+import Models.Service;
+import Models.ServiceDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -14,11 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 public class ProductList extends HttpServlet {
 
     private ProductDAO productDAO;
+    private ServiceDAO serviceDAO;
 
     @Override
     public void init() throws ServletException {
         super.init();
         productDAO = new ProductDAO();
+        serviceDAO = new ServiceDAO();
     }
 
     @Override
@@ -27,8 +31,10 @@ public class ProductList extends HttpServlet {
 
         try {
             List<Product> productList = productDAO.getProductList();
+            List<Service> serviceList = serviceDAO.getServiceList();
             
             request.setAttribute("productList", productList);
+            request.setAttribute("serviceList", serviceList);
             
             RequestDispatcher dispatcher = request.getRequestDispatcher("products.jsp");
             dispatcher.forward(request, response);
