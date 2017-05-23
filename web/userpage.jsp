@@ -22,7 +22,7 @@
             }
         %>
 
-        <form action="AddOrder" method="Post">
+        <form action="AddOrder" method="Post" enctype="multipart/form-data">
             <input type="hidden" name="username" value="<%= request.getSession().getAttribute("username")%>">
             <p>Alegeti serviciul dorit:</p>
             <%
@@ -49,8 +49,7 @@
             <% }%>
 
             <p>Alegeti poza dorita:</p>
-            <!--<input type="file" name="photo"> <br>-->
-            <input type="text" name="photo"> <br>
+            <input type="file" name="photo" size="50"> <br>
 
             <button type="submit">Trimiteti comanda</button>
         </form>
