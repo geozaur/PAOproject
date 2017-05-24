@@ -10,52 +10,73 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Hello <%= request.getSession().getAttribute("username")%></h1>
+        <div class="container centered">
 
-        <%
-            if (request.getAttribute("valid") != null) {
-                if (request.getAttribute("valid").equals("false")) { %>
-        <p>Asociere produs-serviciu invalida. Va rugam refaceti comanda.</p>
-        <%} else {%>
-        <p>Comanda plasata cu succes!</p>    
-        <%}
-            }
-        %>
+            <div class="centered">
 
-        <form action="AddOrder" method="Post" enctype="multipart/form-data">
-            <input type="hidden" name="username" value="<%= request.getSession().getAttribute("username")%>">
-            <p>Alegeti serviciul dorit:</p>
-            <%
-                for (Service service : (List<Service>) request.getAttribute("serviceList")) {
-            %>
-            <input type="radio" name="service" value="<%= service.getId()%>"> 
-            <%= service.getName() + " "
-                    + service.getType() + " "
-                    + (service.isColored() ? "colorat" : "necolorat") + " "
-                    + service.getPrice() + "RON" %>
-            <br>
-            <% } %>
+                <h1 class="title">Hello <%= request.getSession().getAttribute("username")%></h1>
 
-            <p>Alegeti produsul dorit:</p>
-            <%
-                for (Product product : (List<Product>) request.getAttribute("productList")) {
-            %>
-            <input type="radio" name="product" value="<%= product.getId()%>"> 
-            <%= product.getName() + " "
-                    + product.getColor() + " "
-                    + product.getSize() + " "
-                    + product.getPrice() + "RON"%>
-            <br>
-            <% }%>
+                <%
+                    if (request.getAttribute("valid") != null) {
+                        if (request.getAttribute("valid").equals("false")) { %>
 
-            <p>Alegeti poza dorita:</p>
-            <input type="file" name="photo" size="50"> <br>
+                <div class="invalid-order">
+                    <p>Asociere produs-serviciu invalida. Va rugam refaceti comanda.</p>
+                </div>
 
-            <button type="submit">Trimiteti comanda</button>
-        </form>
+                <%} else {%>
 
-        <form action="SignoutController">
-            <button>Log out</button>
-        </form>
+                <div class="valid-order">
+                    <p>Comanda plasata cu succes!</p>    
+                </div>
+
+                <%}
+                    }
+                %>
+
+                <form action="AddOrder" method="Post" enctype="multipart/form-data">
+                    <input type="hidden" name="username" value="<%= request.getSession().getAttribute("username")%>">
+                    <p>Alegeti serviciul dorit:</p>
+                    <div class="radio">
+                        <%
+                            for (Service service : (List<Service>) request.getAttribute("serviceList")) {
+                        %>
+                        <input type="radio" name="service" value="<%= service.getId()%>"> 
+                        <%= service.getName() + " "
+                                + service.getType() + " "
+                                + (service.isColored() ? "colorat" : "necolorat") + " "
+                                + service.getPrice() + "RON"%>
+                        <br>
+                        <% } %>
+                    </div>
+
+                    <p>Alegeti produsul dorit:</p>
+                    <div class="radio">
+                        <%
+                            for (Product product : (List<Product>) request.getAttribute("productList")) {
+                        %>
+                        <input type="radio" name="product" value="<%= product.getId()%>"> 
+                        <%= product.getName() + " "
+                                + product.getColor() + " "
+                                + product.getSize() + " "
+                                + product.getPrice() + "RON"%>
+                        <br>
+                        <% }%>
+                    </div>
+
+                    <p>Alegeti poza dorita:</p>
+                    <input type="file" name="photo" size="50">
+                    
+                    <br>
+                    <br>
+
+                    <button class="btn-submit" type="submit">Trimiteti comanda</button>
+                </form>
+
+                <form action="SignoutController">
+                    <button class="btn-log">Log out</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

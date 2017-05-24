@@ -5,11 +5,14 @@
 <html>
     <head>
         <title>Error</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <center>
-            <h1>Error</h1>
-            <h2><%=exception.getMessage()%><br/> </h2>
-        </center>
+        <div class="container centered">
+            <h1 class="title">Error</h1>
+            <h2 class="error-msg"><%=exception.getMessage()%><br/> </h2>
+        </div>
     </body>
 </html>

@@ -4,40 +4,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Orders list</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/style.css" rel="stylesheet">
     </head>
     <body>
-        <table>
-            <caption><h2><%= request.getAttribute("serviceName")%> report</h2></caption>
-            <tr>
-                <th>Id</th>
-                <th>Client</th>
-                <th>Product</th>
-                <th>Date</th>
-                <th>State</th>
-                <th>Photo</th>
-                <th>Price</th>
-            </tr>
+        <div class="container centered">
+            <div class="centered pad">
+                <table>
+                    <caption><h2><%= request.getAttribute("serviceName")%> report</h2></caption>
+                    <tr>
+                        <th>Id</th>
+                        <th>Client</th>
+                        <th>Product</th>
+                        <th>Date</th>
+                        <th>State</th>
+                        <th>Photo</th>
+                        <th>Price</th>
+                    </tr>
 
-            <%
-                for (Order order : (List<Order>) request.getAttribute("serviceOrders")) {
-            %>
-            <tr>
-                <td><%= order.getId()%></td>
-                <td><%= order.getClient().getFirstName() + " " + order.getClient().getLastName()%></td>
-                <td><%= order.getProduct().getName()%></td>
-                <td><%= order.getDate()%></td>
-                <td><%= order.isState()%></td>
-                <td><%= order.getPhoto()%></td>
-                <td><%= order.getPrice()%></td>
-            </tr>
-            <%
-                }
-            %>
-        </table>
+                    <%
+                        for (Order order : (List<Order>) request.getAttribute("serviceOrders")) {
+                    %>
+                    <tr>
+                        <td><%= order.getId()%></td>
+                        <td><%= order.getClient().getFirstName() + " " + order.getClient().getLastName()%></td>
+                        <td><%= order.getProduct().getName()%></td>
+                        <td><%= order.getDate()%></td>
+                        <td><%= order.isState()%></td>
+                        <td><%= order.getPhoto()%></td>
+                        <td><%= order.getPrice()%></td>
+                    </tr>
+                    <%
+                        }
+                    %>
+                </table>
 
-
-        <a href="ServiceList">Back to services page</a>
+                <br>
+                
+                <a href="ServiceList">Back to services page</a>
+            </div></div>
     </body>
 </html>
