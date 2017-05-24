@@ -31,7 +31,11 @@
                         <td> <%= service.getId()%></td>
                         <td> <%= service.getName()%></td>
                         <td> <%= service.getType()%></td>
-                        <td> <%= service.isColored()%></td>
+                        <td> <% if (service.isColored()) {
+                            %>Colorat<%
+                            } else {
+                            %>Necolorat<%
+                            }%></td>
                         <td> <%= service.getPrice()%></td>
                         <td style="text-align: center"> <form action="ServiceOrder" method="POST">
                                 <input type="hidden" name="id" value=<%= service.getId()%>>
@@ -50,7 +54,7 @@
 
                 <br>
                 <br>
-                
+
                 <fieldset>
                     <legend>
                         Add a new service

@@ -71,8 +71,14 @@
                         <%
                             List<Service> serviceList = (List<Service>) request.getAttribute("serviceList");
                             for (int i = 0; i < serviceList.size(); i++) {
+                                String serviceName = serviceList.get(i).getName() + " " + serviceList.get(i).getType();
+                                if (serviceList.get(i).isColored()) {
+                                    serviceName = serviceName + " Colorat";
+                                } else {
+                                    serviceName = serviceName + " Necolorat";
+                                }
                         %>
-                        <input type="checkbox" name="service<%=i%>" value="<%= serviceList.get(i).getId()%>"> <%=serviceList.get(i).getName()%>
+                        <input type="checkbox" name="service<%=i%>" value="<%= serviceList.get(i).getId()%>"> <%=serviceName%>
                         <br>
                         <%
                             }

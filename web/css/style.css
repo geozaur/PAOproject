@@ -91,7 +91,7 @@ input[type=submit]:hover {
 
 .container {
     width: 1000px;
-    height: 100%;
+    height: 1000px;
     border: 2px solid lightgray;
     border-radius: 10px;
     background-color: lightgray;
@@ -100,7 +100,7 @@ input[type=submit]:hover {
 .centered {
     margin: auto;
     text-align: center;
-    position: absolute;
+    position:absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
