@@ -22,10 +22,16 @@ public class AddService extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        boolean colored;
+        if (request.getParameter("colored")==null){
+            colored = false;
+        }else{
+            colored = true;
+        }
         Service service = new Service("",
                 request.getParameter("name"),
                 request.getParameter("type"),
-                request.getParameter("colored") == "true",
+                colored,
                 Integer.parseInt(request.getParameter("price")));
         
         int success;
